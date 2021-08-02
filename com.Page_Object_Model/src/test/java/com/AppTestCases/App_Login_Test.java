@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -16,6 +17,7 @@ import com.project.Utilities.ConfigReader;
 import com.project.Utilities.ScreenCapture;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 
 public class App_Login_Test {
@@ -66,10 +68,22 @@ public class App_Login_Test {
 	}
 	
 	
+	@Test
+	public void verifybutton() {
+		loginservice=PageFactory.initElements(driver, AppLoginServices.class);
+		loginservice.getloginbutton();
+	}
+	
 	
 	@AfterTest
-	public void generateExtentReport() {
+	public void generateExtentReport(ITestResult result) {
 		extent.flush();
+		
+		if(ITestResult.FAILURE == result.FAILURE) {
+			test.log(LogStatus.INFO, result.getName());
+		}
+		
+		
 	}
 	
 	

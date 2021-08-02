@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -80,7 +81,7 @@ public class App_Login_Test {
 		extent.flush();
 		
 		if(ITestResult.FAILURE == result.FAILURE) {
-			test.log(LogStatus.INFO, result.getName());
+			Reporter.log(result.getName());
 		}
 		
 		

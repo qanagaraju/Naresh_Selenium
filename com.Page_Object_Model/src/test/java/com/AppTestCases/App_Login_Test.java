@@ -78,7 +78,7 @@ public class App_Login_Test {
 	
 	@AfterTest
 	public void generateExtentReport(ITestResult result) {
-		extent.flush();
+		//extent.flush();
 		
 		if(ITestResult.FAILURE == result.FAILURE) {
 			Reporter.log(result.getName());
